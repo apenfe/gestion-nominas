@@ -2,15 +2,15 @@
     <div class="register">
         <h1>Crear cuenta</h1>
 
-        <form class="ui form">
+        <form class="ui form formulario" @submit.prevent="onRegister">
             <div class="field">
-                <input type="email" placeholder="Correo electronico">
+                <input type="email" placeholder="Correo electronico" v-model="formData.email">
             </div>
             <div class="field">
-                <input type="password" placeholder="Contraseña">
+                <input type="password" placeholder="Contraseña" v-model="formData.password">
             </div>
             <div class="field">
-                <input type="password" placeholder="Repetir Contraseña">
+                <input type="password" placeholder="Repetir Contraseña" v-model="formData.repeatPassword">
             </div>
             <button type="submit" class="ui button positive fluid">Registrar</button>
         </form>
@@ -26,7 +26,17 @@ export default {
         changeForm: Function,
     },
     setup(){
+        let formData = {};
 
+        const onRegister = () => {
+            console.log(formData);
+            
+        };
+
+        return{
+            formData,
+            onRegister
+        }
     }
 }
 </script>
@@ -45,7 +55,7 @@ h1{
     margin-bottom: 30px;
 }
 
-form{
+.formulario{
 
     input.error{
         border-color: #faa;
@@ -60,7 +70,7 @@ p{
 
     &.hover{
         cursor: pointer;
-        opacity: 0.1;
+        opacity: 0.6;
     }
 }
 </style>
